@@ -1,0 +1,23 @@
+//修改element-plus组件内的样式
+//1.定义自定义类名空间
+//2.再App。vue中引入
+//3.再想要改变的组件的父组件上加自定义类名
+.dyh--choose-icon-dialog-body-height {
+    .el-dialog__body {
+        height: 500px;
+        overflow-y: scroll;
+    }
+}
+
+.list-tabs__item {
+
+    .el-tabs__nav {
+      width: 100%;
+      display: flex;
+    }
+  
+    .el-tabs__item {
+      flex: 1;
+      text-align: center;
+    }
+  }
