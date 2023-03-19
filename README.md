@@ -14,14 +14,21 @@
   
 ### 全局引入组件库
 --  import ElementPlus from "element-plus";
+
 --  import "element-plus/dist/index.css";
+
 --  import UI from "dyh-ui-components";
+
 --  import "dyh-ui-components/style.css";
+
   
 ### 按需引入组件库
 -- import ElementPlus from "element-plus";
+
 -- import "element-plus/dist/index.css";
+
 -- import { ChooseIcon } from "dyh-ui-components"
+
 -- import "dyh-ui-components/style.css";
  
  
