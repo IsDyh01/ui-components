@@ -5,7 +5,7 @@ export interface MenuItemType {
   // 处理之后的图标
   i?: any;
   // 导航的名字
-  name: string;
+  title: string;
   // 导航的标识
   index: string;
   // 导航的子菜单

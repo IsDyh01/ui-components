@@ -5,6 +5,7 @@ import "./style/index.scss";
 import { MenuItemType } from "./types";
 
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
+import { useRouter } from "vue-router";
 
 //使用tsx进行递归渲染菜单，tsx/jsx只能使用export default方式导出组件
 export default defineComponent({
@@ -17,14 +18,18 @@ export default defineComponent({
       type: String,
       default: "",
     },
-    isRouter: {
-      type: Boolean,
-      default: false,
-    },
   },
   setup(props, ctx) {
+    const router = useRouter();
     //传递给该组件且未在props中绑定的属性
     const attrs = useAttrs();
+
+    // 菜单的点击事件
+    const menuItemClick = (item: any) => {
+      router.push({
+        path: item.index,
+      });
+    };
 
     //递归渲染菜单,返回一段tsx代码
     const renderMenu = (data: MenuItemType[]) => {
@@ -37,8 +42,8 @@ export default defineComponent({
           title: () => {
             return (
               <>
-                <item.i />
-                <span>{item.name}</span>
+                {/* <item.i /> */}
+                <span>{item.title}</span>
               </>
             );
           },
@@ -56,14 +61,16 @@ export default defineComponent({
           );
         } else {
           return (
-            <el-menu-item index={item.index}>
-              <item.i />
-              <span>{item.name}</span>
+            <el-menu-item index={item.index} onClick={menuItemClick}>
+              {/* <item.i /> */}
+              <span>{item.title}</span>
             </el-menu-item>
           );
         }
       });
     };
+
+    //
 
     //返回渲染函数，渲染函数返回vnode --> 使用jsx形式的vnode
     return () => {
@@ -71,7 +78,6 @@ export default defineComponent({
         <el-menu
           class="el-menu-vertical-demo"
           default-active={props.defaultActive}
-          router={props.isRouter}
           {...attrs}
         >
           {renderMenu(props.data)}
