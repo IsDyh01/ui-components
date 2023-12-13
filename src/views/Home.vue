@@ -7,38 +7,7 @@
   </div>
   <div @click="updateAuth">点击更新权限</div> -->
 </template>
-<script setup lang="ts">
-import { onActivated, onDeactivated, onMounted, ref } from "vue";
-
-const hasAuth = (code: number) => {
-  let codes = [1, 2, 3];
-  if (codes.includes(code)) return true;
-  else return false;
-};
-const code = ref<number>(1);
-const updateAuth = () => {
-  code.value = code.value === 1 ? 4 : 1;
-  console.log(code.value);
-};
-const vAuth = {
-  mounted(el, binding) {
-    el._parentNode = el.parentNode;
-    el.replaceNode = document.createComment("auth");
-    const { value } = binding;
-    if (!hasAuth(value)) {
-      el.parentNode.replaceChild(el.replaceNode, el);
-    }
-  },
-  updated(el, binding) {
-    const { value } = binding;
-    if (hasAuth(value)) {
-      el._parentNode.replaceChild(el, el.replaceNode);
-    } else {
-      el._parentNode.replaceChild(el.replaceNode, el);
-    }
-  },
-};
-</script>
+<script setup lang="ts"></script>
 <style lang="scss" scoped>
 .home {
   margin-left: 250px;

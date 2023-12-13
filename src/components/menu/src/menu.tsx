@@ -1,5 +1,4 @@
 import { defineComponent, PropType, useAttrs } from "vue";
-import { toLine } from "../../../utils";
 
 import "./style/index.scss";
 

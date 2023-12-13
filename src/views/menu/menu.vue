@@ -1,11 +1,6 @@
 <template>
   <div class="container">
     <div>
-      <span>普通菜单</span>
-      <ui-menu :data="data1" defaultActive="2"></ui-menu>
-    </div>
-
-    <div>
       <span>无限层级菜单</span>
       <ui-recursionMenu
         :data="data2"
