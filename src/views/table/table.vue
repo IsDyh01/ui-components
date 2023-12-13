@@ -120,6 +120,14 @@ import { ref, onMounted } from "vue";
 import { TableOptions } from "../../components/table/src/types/types";
 import axios from "axios";
 
+import { onBeforeRouteUpdate, onBeforeRouteLeave } from "vue-router";
+
+// onBeforeRouteUpdate(() => {
+//   console.log(222);
+// });
+// onBeforeRouteLeave(() => {
+//   console.log(222);
+// });
 const options1: TableOptions[] = [
   {
     label: "日期",

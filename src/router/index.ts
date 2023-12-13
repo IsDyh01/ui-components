@@ -1,4 +1,9 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHashHistory,
+  RouteRecordRaw,
+  createWebHistory,
+} from "vue-router";
 
 //主体路由
 import Container from "../components/container/src/index.vue";
@@ -58,13 +63,21 @@ const routes: RouteRecordRaw[] = [
         path: "/table",
         component: () => import("../views/table/table.vue"),
       },
+      {
+        path: "/table/:id",
+        component: () => import("../views/table/table.vue"),
+      },
     ],
   },
 ];
 
 const router = createRouter({
   routes,
-  history: createWebHashHistory(),
+  history: createWebHistory(),
 });
+
+// router.beforeEach((to, from) => {
+//   console.log(111);
+// });
 
 export default router;
