@@ -2,10 +2,7 @@
   <div class="container">
     <div>
       <span>无限层级菜单</span>
-      <ui-recursionMenu
-        :data="data2"
-        defaultActive="3-1-1-1"
-      ></ui-recursionMenu>
+      <ui-recursionMenu :data="data2"></ui-recursionMenu>
     </div>
   </div>
 </template>

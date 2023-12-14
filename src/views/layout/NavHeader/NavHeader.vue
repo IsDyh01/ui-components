@@ -1,26 +1,47 @@
 <template>
   <div id="nav-header">
-    <div>折叠菜单</div>
-    <div class="switchTheme">
+    <div class="icon">
+      <SvgIcon
+        iconName="Fold"
+        :size="20"
+        v-if="!collapse"
+        @click="emits('update:collapse', true)"
+      ></SvgIcon>
+      <SvgIcon
+        iconName="Expand"
+        :size="20"
+        v-else
+        @click="emits('update:collapse', false)"
+      ></SvgIcon>
+    </div>
+    <!-- <div class="switchTheme">
       <el-switch
         v-model="switchStatus"
         :active-action-icon="view"
         :inactive-action-icon="hide"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 <script lang="ts" setup>
-import { ref } from "vue";
-import { Hide, View } from "@element-plus/icons-vue";
-const hide = ref(Hide);
-const view = ref(View);
-const switchStatus = ref<boolean>(false);
+import SvgIcon from "../../../components/svgIcon/SvgIcon.vue";
+
+defineProps<{
+  collapse: boolean;
+}>();
+
+const emits = defineEmits<{
+  (e: "update:collapse", val: boolean): void;
+}>();
 </script>
 <style scoped lang="scss">
 #nav-header {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .icon {
+    cursor: pointer;
+  }
 }
 </style>

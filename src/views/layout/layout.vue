@@ -8,7 +8,7 @@
       <!-- 主内容区域 -->
       <el-main>
         <el-header>
-          <NavHeader></NavHeader>
+          <NavHeader v-model:collapse="collapse"></NavHeader>
         </el-header>
         <div class="router-container">
           <!-- 放置子路由 -->
@@ -19,8 +19,10 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from "vue";
 import NavSide from "./NavSide/NavSide.vue";
 import NavHeader from "./NavHeader/NavHeader.vue";
+const collapse = ref<boolean>(false);
 </script>
 <style scoped lang="scss">
 #layout {
@@ -29,16 +31,17 @@ import NavHeader from "./NavHeader/NavHeader.vue";
     height: 100%;
   }
   .el-aside {
-    width: 100px;
+    // width: 100px;
   }
   .el-main {
-    padding: 0 0px 20px 0;
+    padding: 0 0px 0px 0;
   }
   .el-header {
     height: 40px;
   }
   .router-container {
-    padding: 0 20px;
+    padding: 10px 20px !important;
+    box-sizing: border-box;
     height: calc(100% - 40px);
     overflow-y: auto;
     &::-webkit-scrollbar {
