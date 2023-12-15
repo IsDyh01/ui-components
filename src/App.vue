@@ -3,8 +3,8 @@
 </template>
 
 <style lang="scss">
-@import "./style/base.scss";
-@import "./style/ui.scss";
+// @import "./style/base.scss";
+// @import "./style/ui.scss";
 .notification-popper-class {
   padding: 0 !important;
 }

@@ -2,7 +2,7 @@
   <div id="layout">
     <el-container>
       <!-- 侧边栏菜单 -->
-      <el-aside>
+      <el-aside :class="{ 'is-collapse': collapse }">
         <NavSide :collapse="collapse"></NavSide>
       </el-aside>
       <!-- 主内容区域 -->
@@ -13,11 +13,13 @@
         <div class="container">
           <div class="router-container">
             <!-- 放置子路由 -->
-            <router-view></router-view>
+            <Transition name="fade">
+              <router-view></router-view>
+            </Transition>
           </div>
           <!-- 放置代码示例 -->
           <div class="code-container">
-            <ViewVue v-model:codeStr="codeStr"></ViewVue>
+            <ViewVue :codeStr="codeStr"></ViewVue>
           </div>
         </div>
       </el-main>
@@ -50,10 +52,11 @@ watch(
     height: 100%;
   }
   .el-aside {
-    // width: 100px;
-    max-width: 200px;
-    // min-width: none;
-    // width: 0;
+    width: 200px;
+    transition: width 0.3s ease;
+  }
+  .is-collapse {
+    width: 64px;
   }
   .el-main {
     padding: 0 0px 0px 0;

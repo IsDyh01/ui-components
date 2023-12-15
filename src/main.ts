@@ -4,6 +4,9 @@ import App from "./App.vue";
 
 import router from "./router/index";
 
+// 引入全局样式文件
+import "./style/index.scss";
+
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
