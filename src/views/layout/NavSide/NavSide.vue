@@ -1,13 +1,18 @@
 <template>
   <div id="nav-side">
-    <ui-recursionMenu :data="menuList"></ui-recursionMenu>
+    <ui-recursionMenu :data="menuList" :collapse="collapse"></ui-recursionMenu>
   </div>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import { allRoutes } from "../../../router/index";
 import { MenuItemType } from "../../../components/menu/src/types";
+defineProps<{
+  collapse: boolean;
+}>();
+
 let menuList = ref<MenuItemType[]>([]);
+
 const handlerRoutesToMenuList = (routes: any[]) => {
   if (Array.isArray(routes)) {
     const list = routes.map(

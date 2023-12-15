@@ -4,6 +4,8 @@ import { MenuItemType } from "./types";
 
 import { useRoute, useRouter } from "vue-router";
 
+import "./menu.scss";
+
 import SvgIcon from "../../svgIcon/SvgIcon.vue";
 
 //使用tsx进行递归渲染菜单，tsx/jsx只能使用export default方式导出组件
@@ -12,6 +14,10 @@ export default defineComponent({
     data: {
       type: Array as PropType<MenuItemType[]>,
       required: true,
+    },
+    collapse: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -83,6 +89,7 @@ export default defineComponent({
         <el-menu
           class="el-menu-vertical-demo"
           default-active={defaultActive.value}
+          collapse={props.collapse}
           {...attrs}
         >
           {renderMenu(props.data)}

@@ -14,21 +14,20 @@
         @click="emits('update:collapse', false)"
       ></SvgIcon>
     </div>
-    <!-- <div class="switchTheme">
-      <el-switch
-        v-model="switchStatus"
-        :active-action-icon="view"
-        :inactive-action-icon="hide"
-      />
-    </div> -->
+    <div class="switchTheme">
+      <el-switch v-model="switchStatus" />
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
+import { ref } from "vue";
 import SvgIcon from "../../../components/svgIcon/SvgIcon.vue";
 
 defineProps<{
   collapse: boolean;
 }>();
+
+const switchStatus = ref<boolean>(false);
 
 const emits = defineEmits<{
   (e: "update:collapse", val: boolean): void;
