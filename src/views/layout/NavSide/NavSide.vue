@@ -48,6 +48,7 @@ onMounted(() => {
 #nav-side {
   height: 100%;
   overflow: auto;
+  background-color: var(--bg-color);
   &::-webkit-scrollbar {
     display: none;
   }

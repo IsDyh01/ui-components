@@ -1,3 +1,7 @@
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
 }
+
+.el-menu-vertical-demo {
+  background-color: var(--bg-color) !important;
+}

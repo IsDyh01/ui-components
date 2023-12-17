@@ -14,4 +14,8 @@ withDefaults(
   }
 );
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-icon {
+  color: var(--icon-color);
+}
+</style>

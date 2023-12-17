@@ -54,6 +54,7 @@ watch(
   .el-aside {
     width: 200px;
     transition: width 0.3s ease;
+    background-color: var(--bg-color);
   }
   .is-collapse {
     width: 64px;
@@ -63,18 +64,19 @@ watch(
   }
   .el-header {
     height: 40px;
+    background-color: var(--bg-color);
   }
   .container {
     display: flex;
     padding: 10px !important;
     box-sizing: border-box;
     height: calc(100% - 40px);
-    background-color: #eee;
+    background-color: var(--diviler-bg-color);
 
     .router-container {
       flex: 1;
       height: 100%;
-      background-color: white;
+      background-color: var(--bg-color);
       margin-right: 10px;
       overflow-y: auto;
       &::-webkit-scrollbar {

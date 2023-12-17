@@ -15,23 +15,32 @@
       ></SvgIcon>
     </div>
     <div class="switchTheme">
-      <el-switch v-model="switchStatus" />
+      <el-switch v-model="switchStatus" @change="switchChange" />
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
 import SvgIcon from "../../../components/svgIcon/SvgIcon.vue";
+import useThemeStore from "../../../store/theme";
+import initTheme from "../../../utils/changeTheme";
 
 defineProps<{
   collapse: boolean;
 }>();
 
-const switchStatus = ref<boolean>(false);
+const themeStore = useThemeStore();
+
+const switchStatus = ref<boolean>(themeStore.theme === "light" ? false : true);
 
 const emits = defineEmits<{
   (e: "update:collapse", val: boolean): void;
 }>();
+
+const switchChange = () => {
+  themeStore.changeTheme();
+  initTheme(themeStore.theme);
+};
 </script>
 <style scoped lang="scss">
 #nav-header {

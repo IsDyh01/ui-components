@@ -6,6 +6,9 @@ import router from "./router/index";
 
 import pinia from "./store/index";
 
+// 引入初始化主题文件
+import initTheme from "./utils/changeTheme";
+
 // 引入全局样式文件
 import "./style/index.scss";
 
@@ -20,6 +23,13 @@ import UI from "./components";
 
 //引入mock
 import "./mock";
+
+// 初始化主题
+if (!localStorage.getItem("theme")) {
+  localStorage.setItem("theme", "light");
+}
+const theme = localStorage.getItem("theme");
+initTheme(theme!);
 
 const app = createApp(App);
 
