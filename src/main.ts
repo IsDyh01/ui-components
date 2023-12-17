@@ -4,6 +4,8 @@ import App from "./App.vue";
 
 import router from "./router/index";
 
+import pinia from "./store/index";
+
 // 引入全局样式文件
 import "./style/index.scss";
 
@@ -22,6 +24,7 @@ import "./mock";
 const app = createApp(App);
 
 app.use(router);
+app.use(pinia);
 app.use(ElementPlus);
 app.use(UI);
 // app.use(ChooseIcon);
