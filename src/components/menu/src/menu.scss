@@ -5,3 +5,15 @@
 .el-menu-vertical-demo {
   background-color: var(--bg-color) !important;
 }
+
+.el-menu-item {
+  color: var(--menu-item-color);
+}
+
+.el-menu-item:hover {
+  background-color: none !important;
+  color: #409eff !important;
+  .el-icon {
+    color: #409eff !important;
+  }
+}

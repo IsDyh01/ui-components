@@ -63,7 +63,11 @@ export default defineComponent({
           );
         } else {
           return (
-            <el-menu-item index={item.index} onClick={menuItemClick}>
+            <el-menu-item
+              index={item.index}
+              onClick={menuItemClick}
+              class="menuItem"
+            >
               <SvgIcon iconName={item.icon}></SvgIcon>
               <span>{item.title}</span>
             </el-menu-item>
