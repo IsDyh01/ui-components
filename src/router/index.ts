@@ -10,8 +10,15 @@ import form from "@/views/form/form.vue?raw";
 import modelForm from "@/views/modelForm/modelForm.vue?raw";
 import table from "@/views/table/table.vue?raw";
 import trend from "@/views/trend/trend.vue?raw";
+import ViewPdf from "@/views/viewPdf/ViewPdf.vue?raw";
 
 export const allRoutes = [
+  {
+    path: "/viewPdf",
+    component: () => import("../views/viewPdf/ViewPdf.vue"),
+    meta: { title: "pdf预览", icon: "Document", codeStr: ViewPdf },
+    children: [],
+  },
   {
     path: "/chooseIcon",
     component: () => import("../views/chooseIcon/ChooseIcon.vue"),
@@ -85,7 +92,7 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     component: () => import("../views/layout/layout.vue"),
     children: allRoutes,
-    redirect: "/chooseIcon",
+    redirect: "/viewPdf",
   },
 ];
 
