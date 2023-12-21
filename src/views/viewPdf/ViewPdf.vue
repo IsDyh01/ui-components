@@ -1,1 +1,3 @@
-<template>1111</template>
+<template>
+  <ui-view-pdf></ui-view-pdf>
+</template>
