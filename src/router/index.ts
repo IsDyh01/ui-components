@@ -11,8 +11,16 @@ import modelForm from "@/views/modelForm/modelForm.vue?raw";
 import table from "@/views/table/table.vue?raw";
 import trend from "@/views/trend/trend.vue?raw";
 import ViewPdf from "@/views/viewPdf/ViewPdf.vue?raw";
+// import slidingVerify from '@/views/slidingVerify.vue'
+import slidingVerify from "@/views/slidingVerify/SlidingVerify.vue?raw";
 
 export const allRoutes = [
+  {
+    path: "/slidingVerify",
+    component: () => import("../views/slidingVerify/SlidingVerify.vue"),
+    meta: { title: "滑动验证", icon: "Document", codeStr: slidingVerify },
+    children: [],
+  },
   {
     path: "/viewPdf",
     component: () => import("../views/viewPdf/ViewPdf.vue"),
