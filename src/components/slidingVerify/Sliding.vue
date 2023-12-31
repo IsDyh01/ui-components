@@ -67,9 +67,9 @@ const props = withDefaults(
     // 验证容错值
     faultTolerant?: number;
     // 验证成功的回调
-    onSuccess: () => void;
+    onSuccess?: () => void;
     // 验证失败的回调
-    onError: () => void;
+    onError?: () => void;
   }>(),
   {
     containerHeight: 300,
@@ -187,10 +187,10 @@ const handleDrapUp = () => {
   // 判断差值是否超过容错值
   if (val > props.faultTolerant) {
     status.value = "fail";
-    props.onError();
+    if (props.onError) props.onError();
   } else {
     status.value = "success";
-    props.onSuccess();
+    if (props.onSuccess) props.onSuccess();
   }
   // 关闭拖拽
   startDrag.value = false;

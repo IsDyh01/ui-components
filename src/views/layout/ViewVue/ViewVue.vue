@@ -12,7 +12,7 @@
 import { ref, watch } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { vue as LangVue } from "@codemirror/lang-vue"; // vue专用语言包
-import { oneDark } from "@codemirror/theme-one-dark"; // codemirror主题S
+import { oneDark } from "@codemirror/theme-one-dark"; // codemirror主题
 
 const props = defineProps<{
   codeStr: string;

@@ -100,7 +100,7 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     component: () => import("../views/layout/layout.vue"),
     children: allRoutes,
-    redirect: "/viewPdf",
+    redirect: "/slidingVerify",
   },
 ];
 

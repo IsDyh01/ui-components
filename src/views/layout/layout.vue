@@ -94,6 +94,7 @@ watch(
     }
     .code-container {
       flex: 1;
+      overflow-x: auto;
       height: 100%;
     }
   }
