@@ -7,6 +7,7 @@
   <el-dialog
     :title="title"
     v-model="dialogVisible"
+    align-center
     class="dyh--choose-icon-dialog-body-height"
   >
     <!-- 显示所有图标 -->
@@ -18,7 +19,7 @@
         @click="handleCopy(item)"
       >
         <!-- 动态渲染所有的组件 -->
-        <component :is="`el-icon-${toLine(item)}`"></component>
+        <SvgIcon :icon-name="item" :size="20"></SvgIcon>
         <!-- 展示图标原本的名字 -->
         <span>{{ item }}</span>
       </div>
@@ -30,8 +31,8 @@
 import { ref, watch } from "vue";
 // 先拿到所有的icon对象，内部是组件名称对应组件对象
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-import { toLine } from "../../../utils";
 import { useCopy } from "../../../hooks/useCopy";
+import SvgIcon from "../../svgIcon/SvgIcon.vue";
 
 const props = defineProps({
   title: String,
@@ -44,7 +45,7 @@ const emits = defineEmits(["update:visible"]);
 //图标点击复制
 const handleCopy = (item: string) => {
   //item为原本标签的名字
-  useCopy(`<el-icon-${toLine(item)} />`);
+  useCopy(item);
 };
 
 const dialogVisible = ref(props.visible);
@@ -85,10 +86,6 @@ watch(
     width: 25%;
     height: 70px;
     cursor: pointer;
-  }
-  svg {
-    width: 2em;
-    height: 2em;
   }
 }
 </style>
