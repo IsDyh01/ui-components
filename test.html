@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            position: relative;
+        }
+
+        .content {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            overflow: auto;
+        }
+
+        .main {
+            height: 50px;
+            width: 100px;
+            background-color: blue;
+            position: sticky;
+            /* top: 200px; */
+            top: 50px;
+        }
+
+        .header {
+            position: sticky;
+            width: 100px;
+            height: 200px;
+            background-color: orange;
+        }
+
+        .footer {
+            width: 100px;
+            height: 200px;
+            background-color: black;
+        }
+
+        .fa {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: flex;
+            /* font-size: 20px; */
+        }
+
+        .son {
+            /* font-size: 15px; */
+            width: 1em;
+            height: 1em;
+            flex-basis: 10px;
+            min-width: 30px;
+            border: 1px solid red;
+        }
+
+        html {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500px" height="500px" style="border: 1px solid black;"></canvas>
+    <canvas id="blockCanvas" width="500px" height="500px" style="border: 1px solid black"></canvas>
+    <canvas id="myCanvas"></canvas>
+    <div class="box"></div>
+    <div id="draggable-box" style="width: 100px; height: 100px; background-color: red; position: absolute;">
+    </div>
+    <div class="content">
+        <div class="header">头部</div>
+        <div class="main">中间区域</div>
+        <div class="footer">尾部</div>
+    </div>
+    <div class="fa">
+        <div class="son"></div>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext("2d");
+        const blockCanvas = document.getElementById('blockCanvas');
+        const blockCtx = blockCanvas.getContext('2d');
+        function drawPath(x, y, l, r, ctx, operation) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.arc(x + l / 2, y - r + 2, r, 0.72 * Math.PI, 2.26 * Math.PI);
+            ctx.lineTo(x + l, y);
+            ctx.arc(x + l + r - 2, y + l / 2, r, 1.21 * Math.PI, 2.78 * Math.PI);
+            ctx.lineTo(x + l, y + l);
+            ctx.lineTo(x, y + l);
+            // anticlockwise为一个布尔值。为true时，是逆时针方向，否则顺时针方向
+            ctx.arc(
+                x + r - 2,
+                y + l / 2,
+                r + 0.4,
+                2.76 * Math.PI,
+                1.24 * Math.PI,
+                true
+            );
+            ctx.lineTo(x, y);
+            // // ctx.lineWidth = 2;
+            ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.7)";
+            ctx.stroke();
+            // 该属性是为了让新的绘图放置到已有绘图的上方
+            ctx.globalCompositeOperation = "destination-over";
+            // 判断是填充还是裁切, 裁切主要用于生成图案滑块，填充主要是为了生成镂空图案
+            operation === "fill" ? ctx.fill() : ctx.clip();
+        }
+        const img = new Image();
+        img.crossOrigin = "";
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0);
+            blockCtx.drawImage(img, 0, 0);
+            // 根据位置拿到滑动的块的imageData对象
+            // TODO 改变blockCanvas宽度的大小，并且将该imageData对象在重新渲染到blockCnavas内，生成滑动的验证码
+            const imgData = blockCtx.getImageData(200, 200 - 2 * 9 - 1, 42 + 2 * 9 + 1, 42 + 2 * 9 + 1)
+            console.log(imgData);
+            const can = document.getElementById('myCanvas');
+            const c = can.getContext('2d');
+            can.width = 42 + 2 * 9 + 1;
+            c.putImageData(imgData, 0, 0)
+        }
+        img.src = `https://picsum.photos/500/500`
+
+        drawPath(200, 200, 42, 9, ctx, 'fill')
+        // clip指对canvas进行剪裁只渲染剪裁的区域的画布，现在拿到了滑动的块
+        drawPath(200, 200, 42, 9, blockCtx, 'clip')
+
+        // blockCanvas.width = 42 + 2 * 9;
+        // blockCtx.putImageData(imgData, 0, 200 - 9 * 2 - 1)
+
+
+        // c.putImageData(imgData, 50, 50)
+        const nums = [10, 5, 9, 4, 2];
+        function quickSort(l, r) {
+            if (l >= r) return
+            let i = l;
+            let j = r;
+            let base = nums[l];
+            while (i <= j) {
+                while (i <= j && nums[i] <= base) i++;
+                while (i <= j && nums[j] >= base) j--;
+                if (i < j) {
+                    let temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                    i++;
+                    j--;
+                }
+            }
+            console.log(j);
+            nums[l] = nums[j];
+            nums[j] = base;
+            quickSort(l, j - 1);
+            quickSort(j + 1, r);
+        }
+
+        quickSort(0, nums.length - 1)
+        console.log(nums);
+
+        const content = document.getElementsByClassName('content')[0];
+        const header = document.getElementsByClassName('header')[0];
+        content.addEventListener('click', (e) => {
+            console.log(e.target);
+            console.log(e.currentTarget);
+        })
+        header.addEventListener('click', (e) => {
+            console.log(e.target);
+            console.log(e.currentTarget);
+        })
+    </script>
+</body>
+
+</html>

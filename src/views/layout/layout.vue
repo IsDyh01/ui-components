@@ -13,9 +13,14 @@
         <div class="container">
           <div class="router-container">
             <!-- 放置子路由 -->
-            <Transition name="fade">
+            <!-- <Transition name="fade">
               <router-view></router-view>
-            </Transition>
+            </Transition> -->
+            <router-view v-slot="{ Component }">
+              <Transition name="fade">
+                <component :is="Component" />
+              </Transition>
+            </router-view>
           </div>
           <!-- 放置代码示例 -->
           <div class="code-container">
