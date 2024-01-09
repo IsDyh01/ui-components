@@ -13,12 +13,19 @@ import trend from "@/views/trend/trend.vue?raw";
 import ViewPdf from "@/views/viewPdf/ViewPdf.vue?raw";
 // import slidingVerify from '@/views/slidingVerify.vue'
 import slidingVerify from "@/views/slidingVerify/SlidingVerify.vue?raw";
+import treesComponents from "@/views/treesComponents/TreesComponents.vue?raw";
 
 export const allRoutes = [
   {
     path: "/slidingVerify",
     component: () => import("../views/slidingVerify/SlidingVerify.vue"),
     meta: { title: "滑动验证", icon: "Document", codeStr: slidingVerify },
+    children: [],
+  },
+  {
+    path: "/treesComponents",
+    component: () => import("../views/treesComponents/TreesComponents.vue"),
+    meta: { title: "树形组件", icon: "Document", codeStr: treesComponents },
     children: [],
   },
   {
