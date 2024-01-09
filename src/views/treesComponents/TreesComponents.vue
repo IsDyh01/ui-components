@@ -61,5 +61,9 @@ const data: DataType[] = [
     ],
   },
 ];
+
+// const handleData = (data: ) => {
+
+}
 </script>
 <style lang="scss" scoped></style>
