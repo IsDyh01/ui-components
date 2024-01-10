@@ -2,6 +2,7 @@
   <div class="tree-components">
     <div v-for="(item, idx) in data" :key="item.id">
       <div class="item">
+        <!-- 一级标题独有得序号展示 -->
         <div
           class="serial"
           :style="{ textIndent: `${(item.level - 1) * 20}px` }"
