@@ -21,7 +21,7 @@
         <!-- 增加 | 删除操作 -->
         <div class="action">
           <div class="add" @click="addItem(item)">+</div>
-          <div class="delete" @click="deleteItem">-</div>
+          <div class="delete" @click="deleteItem(item, idx)">-</div>
         </div>
       </div>
       <TreesComponents
@@ -33,6 +33,7 @@
 </template>
 <script lang="ts" setup>
 import TreesComponents from "./TreesComponents.vue";
+import { handleTreeData } from "../../utils/handleTreeData";
 interface DataType {
   level?: number; // 几级标题 1 2 3
   serial?: string; // 序号
@@ -54,13 +55,20 @@ const oneLevelToString: string[] = ["一", "二", "三"];
 
 // 添加数据项，如一级标题点击+是添加一级标题下的二级标题
 const addItem = (item: DataType) => {
+  if (!item.children) {
+    item.children = [];
+  }
   item.children?.push({
     id: +Date.now(),
     title: "序幕",
   });
+  handleTreeData(item.children!, item.serial + ".");
 };
 
-const deleteItem = () => {};
+const deleteItem = (item: DataType, idx: number) => {
+  props.data.splice(idx, 1);
+  handleTreeData(props.data, item.serial?.slice(0, -1)!);
+};
 </script>
 <style lang="scss" scoped>
 .tree-components {

@@ -55,16 +55,16 @@ const data = reactive<DataType[]>([
 ]);
 
 onMounted(() => {
-  handleData(data, 1, "");
+  handleData(data, "");
 });
 
 // 处理树形数据，给一个数据项添加level和serial属性
-const handleData = (data: DataType[], level: number, serial: string) => {
+const handleData = (data: DataType[], serial: string) => {
   data.forEach((item: DataType, index: number) => {
-    item.level = level;
+    item.level = serial.split(".").length; // 根据serial通过.分割成的数组长度来判断层级
     item.serial = serial + (index + 1);
     if (item.children?.length) {
-      handleData(item.children, item.level + 1, item.serial + ".");
+      handleData(item.children, item.serial + ".");
     }
   });
 };
