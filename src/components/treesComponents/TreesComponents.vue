@@ -19,13 +19,14 @@
         </div>
         <div class="title">{{ item.title }}</div>
         <!-- 增加 | 删除操作 -->
-        <div class="action">
+        <div class="action" v-if="isDynamic">
           <div class="add" @click="addItem(item)">+</div>
           <div class="delete" @click="deleteItem(item, idx)">-</div>
         </div>
       </div>
       <TreesComponents
         :data="item.children"
+        :is-dynamic="isDynamic"
         v-if="item.children?.length"
       ></TreesComponents>
     </div>
