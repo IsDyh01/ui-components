@@ -1,8 +1,10 @@
 <template>
-  <ui-choose-city
-    @changeCity="changeCity"
-    @changeProvince="changeProvince"
-  ></ui-choose-city>
+  <div class="choose-city">
+    <ui-choose-city
+      @changeCity="changeCity"
+      @changeProvince="changeProvince"
+    ></ui-choose-city>
+  </div>
 </template>
 
 <script setup lang="ts">

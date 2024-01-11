@@ -1,5 +1,7 @@
 <template>
-  <ui-choose-area @change="getAreaData"></ui-choose-area>
+  <div class="choose-area">
+    <ui-choose-area @change="getAreaData"></ui-choose-area>
+  </div>
 </template>
 
 <script setup lang="ts">

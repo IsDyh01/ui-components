@@ -1,26 +1,28 @@
 <template>
-  <el-button type="primary" @click="open">编辑用户</el-button>
-  <ui-model-form
-    v-model="visible"
-    title="编辑用户"
-    :options="options"
-    center
-    :on-change="handleChange"
-    :on-success="handleSuccess"
-  >
-    <template #uploadArea>
-      <el-button size="small" type="primary">Click to upload</el-button>
-    </template>
-    <template #uploadTip>
-      <div style="color: #ccc; font-size: 12px">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-    <template #footer="{ form }">
-      <el-button @click="cancle(form)">取消</el-button>
-      <el-button type="primary" @click="confirm(form)">确认</el-button>
-    </template>
-  </ui-model-form>
+  <div class="model-form">
+    <el-button type="primary" @click="open">编辑用户</el-button>
+    <ui-model-form
+      v-model="visible"
+      title="编辑用户"
+      :options="options"
+      center
+      :on-change="handleChange"
+      :on-success="handleSuccess"
+    >
+      <template #uploadArea>
+        <el-button size="small" type="primary">Click to upload</el-button>
+      </template>
+      <template #uploadTip>
+        <div style="color: #ccc; font-size: 12px">
+          jpg/png files with a size less than 500kb
+        </div>
+      </template>
+      <template #footer="{ form }">
+        <el-button @click="cancle(form)">取消</el-button>
+        <el-button type="primary" @click="confirm(form)">确认</el-button>
+      </template>
+    </ui-model-form>
+  </div>
 </template>
 
 <script setup lang="ts">

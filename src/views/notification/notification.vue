@@ -15,17 +15,19 @@
     icon="ChatRound"
   ></ui-notification> -->
 
-  <ui-notification :value="50">
-    <!-- 根据用户需要去给弹出框传递内容，在这里传递一个list -->
-    <template #default>
-      <ui-list
-        @clickItem="clickItem"
-        @clickAction="clickAction"
-        :list="list"
-        :actions="actions"
-      ></ui-list>
-    </template>
-  </ui-notification>
+  <div class="notification">
+    <ui-notification :value="50">
+      <!-- 根据用户需要去给弹出框传递内容，在这里传递一个list -->
+      <template #default>
+        <ui-list
+          @clickItem="clickItem"
+          @clickAction="clickAction"
+          :list="list"
+          :actions="actions"
+        ></ui-list>
+      </template>
+    </ui-notification>
+  </div>
 </template>
 
 <script setup lang="ts">

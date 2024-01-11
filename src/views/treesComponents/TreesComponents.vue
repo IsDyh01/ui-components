@@ -1,7 +1,9 @@
 <template>
-  <ui-trees-components :data="data" :isDynamic="true"></ui-trees-components>
-  <br />
-  <ui-trees-components :data="data" :isDynamic="false"></ui-trees-components>
+  <div class="trees-components">
+    <ui-trees-components :data="data" :isDynamic="true"></ui-trees-components>
+    <br />
+    <ui-trees-components :data="data" :isDynamic="false"></ui-trees-components>
+  </div>
 </template>
 <script lang="ts" setup>
 import { onMounted, reactive } from "vue";

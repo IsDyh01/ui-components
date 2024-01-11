@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="choose-time">
     <ui-choose-time
       @startChange="startChange"
       @endChange="endChange"
     ></ui-choose-time>
-    <br>
-    <br>
+    <br />
+    <br />
 
     <ui-choose-date></ui-choose-date>
   </div>

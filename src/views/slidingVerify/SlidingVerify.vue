@@ -1,8 +1,10 @@
 <template>
-  <ui-sliding-verify
-    :onError="onError"
-    :onSuccess="onSuccess"
-  ></ui-sliding-verify>
+  <div class="sliding-verify">
+    <ui-sliding-verify
+      :onError="onError"
+      :onSuccess="onSuccess"
+    ></ui-sliding-verify>
+  </div>
 </template>
 <script lang="ts" setup>
 const onError = () => {

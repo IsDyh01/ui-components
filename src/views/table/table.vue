@@ -1,118 +1,120 @@
 <template>
-  <div class="br">基础表格</div>
-  <ui-table :options="options1" :data="tableData1"></ui-table>
+  <div class="table">
+    <div class="br">基础表格</div>
+    <ui-table :options="options1" :data="tableData1"></ui-table>
 
-  <div class="br">自定义列表格</div>
-  <ui-table :options="options2" :data="tableData1">
-    <template #name="{ scope }">
-      <el-popover effect="light" trigger="hover" placement="top" width="auto">
-        <template #default>
-          <div>name: {{ scope.row.name }}</div>
-          <div>address: {{ scope.row.address }}</div>
-        </template>
-        <template #reference>
-          <el-tag>{{ scope.row.name }}</el-tag>
-        </template>
-      </el-popover>
-    </template>
-    <template #action="{ scope }">
-      <el-button type="primary" size="small" @click="edit(scope)"
-        >编辑</el-button
-      >
-      <el-button type="danger" size="small" @click="deleted(scope)"
-        >删除</el-button
-      >
-    </template>
-  </ui-table>
+    <div class="br">自定义列表格</div>
+    <ui-table :options="options2" :data="tableData1">
+      <template #name="{ scope }">
+        <el-popover effect="light" trigger="hover" placement="top" width="auto">
+          <template #default>
+            <div>name: {{ scope.row.name }}</div>
+            <div>address: {{ scope.row.address }}</div>
+          </template>
+          <template #reference>
+            <el-tag>{{ scope.row.name }}</el-tag>
+          </template>
+        </el-popover>
+      </template>
+      <template #action="{ scope }">
+        <el-button type="primary" size="small" @click="edit(scope)"
+          >编辑</el-button
+        >
+        <el-button type="danger" size="small" @click="deleted(scope)"
+          >删除</el-button
+        >
+      </template>
+    </ui-table>
 
-  <div class="br">带加载效果的表格</div>
-  <ui-table
-    :options="options1"
-    :data="tableData2"
-    elementLoadingText="加载中..."
-  ></ui-table>
+    <div class="br">带加载效果的表格</div>
+    <ui-table
+      :options="options1"
+      :data="tableData2"
+      elementLoadingText="加载中..."
+    ></ui-table>
 
-  <div class="br">可编辑表格</div>
-  <ui-table
-    :options="options3"
-    :data="tableData4"
-    @confirm="confirm"
-    @confirmRow="confirmRow"
-    isEditRow
-    :clickOperate="clickOperate"
-  >
-    <template #name="{ scope }">
-      <el-popover effect="light" trigger="hover" placement="top" width="auto">
-        <template #default>
-          <div>name: {{ scope.row.name }}</div>
-          <div>address: {{ scope.row.address }}</div>
-        </template>
-        <template #reference>
-          <el-tag>{{ scope.row.name }}</el-tag>
-        </template>
-      </el-popover>
-    </template>
-    <template #action="{ scope }">
-      <el-button type="primary" size="small" @click="edit(scope)"
-        >编辑</el-button
-      >
-      <el-button type="danger" size="small" @click="deleted(scope)"
-        >删除</el-button
-      >
-    </template>
-    <template #editAction="{ scope }">
-      <el-button type="primary" size="small" @click="confirmRowEdit(scope)"
-        >确认</el-button
-      >
-      <el-button type="danger" size="small" @click="cancelRowEdit(scope)"
-        >取消</el-button
-      >
-    </template>
-  </ui-table>
+    <div class="br">可编辑表格</div>
+    <ui-table
+      :options="options3"
+      :data="tableData4"
+      @confirm="confirm"
+      @confirmRow="confirmRow"
+      isEditRow
+      :clickOperate="clickOperate"
+    >
+      <template #name="{ scope }">
+        <el-popover effect="light" trigger="hover" placement="top" width="auto">
+          <template #default>
+            <div>name: {{ scope.row.name }}</div>
+            <div>address: {{ scope.row.address }}</div>
+          </template>
+          <template #reference>
+            <el-tag>{{ scope.row.name }}</el-tag>
+          </template>
+        </el-popover>
+      </template>
+      <template #action="{ scope }">
+        <el-button type="primary" size="small" @click="edit(scope)"
+          >编辑</el-button
+        >
+        <el-button type="danger" size="small" @click="deleted(scope)"
+          >删除</el-button
+        >
+      </template>
+      <template #editAction="{ scope }">
+        <el-button type="primary" size="small" @click="confirmRowEdit(scope)"
+          >确认</el-button
+        >
+        <el-button type="danger" size="small" @click="cancelRowEdit(scope)"
+          >取消</el-button
+        >
+      </template>
+    </ui-table>
 
-  <div class="br">带分页器表格</div>
-  <ui-table
-    :options="options3"
-    :data="tableData5"
-    @confirm="confirm"
-    @confirmRow="confirmRow"
-    isEditRow
-    :clickOperate="clickOperate"
-    :total="total"
-    :currentPage="currentPage"
-    :pageSize="pageSize"
-    :isPagination="true"
-    @currentPageChange="currentPageChange"
-    @sizeChange="sizeChange"
-  >
-    <template #name="{ scope }">
-      <el-popover effect="light" trigger="hover" placement="top" width="auto">
-        <template #default>
-          <div>name: {{ scope.row.name }}</div>
-          <div>address: {{ scope.row.address }}</div>
-        </template>
-        <template #reference>
-          <el-tag>{{ scope.row.name }}</el-tag>
-        </template>
-      </el-popover>
-    </template>
-    <template #action="{ scope }">
-      <el-button type="primary" size="small" @click="edit(scope)"
-        >编辑</el-button
-      >
-      <el-button type="danger" size="small" @click="deleted(scope)"
-        >删除</el-button
-      >
-    </template>
-    <template #editAction="{ scope }">
-      <el-button type="primary" size="small" @click="confirmRowEdit(scope)"
-        >确认</el-button
-      >
-      <el-button type="danger" size="small" @click="cancelRowEdit(scope)"
-        >取消</el-button
-      >
-    </template>
-  </ui-table>
+    <div class="br">带分页器表格</div>
+    <ui-table
+      :options="options3"
+      :data="tableData5"
+      @confirm="confirm"
+      @confirmRow="confirmRow"
+      isEditRow
+      :clickOperate="clickOperate"
+      :total="total"
+      :currentPage="currentPage"
+      :pageSize="pageSize"
+      :isPagination="true"
+      @currentPageChange="currentPageChange"
+      @sizeChange="sizeChange"
+    >
+      <template #name="{ scope }">
+        <el-popover effect="light" trigger="hover" placement="top" width="auto">
+          <template #default>
+            <div>name: {{ scope.row.name }}</div>
+            <div>address: {{ scope.row.address }}</div>
+          </template>
+          <template #reference>
+            <el-tag>{{ scope.row.name }}</el-tag>
+          </template>
+        </el-popover>
+      </template>
+      <template #action="{ scope }">
+        <el-button type="primary" size="small" @click="edit(scope)"
+          >编辑</el-button
+        >
+        <el-button type="danger" size="small" @click="deleted(scope)"
+          >删除</el-button
+        >
+      </template>
+      <template #editAction="{ scope }">
+        <el-button type="primary" size="small" @click="confirmRowEdit(scope)"
+          >确认</el-button
+        >
+        <el-button type="danger" size="small" @click="cancelRowEdit(scope)"
+          >取消</el-button
+        >
+      </template>
+    </ui-table>
+  </div>
 </template>
 
 <script setup lang="ts">

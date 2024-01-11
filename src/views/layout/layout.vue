@@ -13,7 +13,7 @@
         <div class="container">
           <div class="router-container">
             <!-- 放置子路由 -->
-            <!-- <Transition name="fade">
+            <!-- <Transition name="fade" mode="out-in">
               <router-view></router-view>
             </Transition> -->
             <router-view v-slot="{ Component }">

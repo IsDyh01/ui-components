@@ -7,6 +7,7 @@ interface DataType {
 }
 
 export const handleTreeData = (data: DataType[], serial: string) => {
+  if (!data.length) return;
   data.forEach((item: DataType, index: number) => {
     item.level = serial.split(".").length;
     item.serial = serial + (index + 1);

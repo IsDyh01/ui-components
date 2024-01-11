@@ -1,5 +1,7 @@
 <template>
-  <ui-choose-icon title="选择图标" v-model:visible="visible"></ui-choose-icon>
+  <div class="choose-icon">
+    <ui-choose-icon title="选择图标" v-model:visible="visible"></ui-choose-icon>
+  </div>
 </template>
 
 <script setup lang="ts">
