@@ -31,6 +31,8 @@ import slidingVerify from "./slidingVerify";
 
 import treesComponents from "./treesComponents";
 
+import file from "./file";
+
 import { App } from "vue";
 
 const componentsPlugin = [
@@ -50,6 +52,7 @@ const componentsPlugin = [
   viewPdf,
   slidingVerify,
   treesComponents,
+  file,
 ];
 
 //在这里继续写一个插件，这个插件可以执行所有组件得插件对象来进行注测

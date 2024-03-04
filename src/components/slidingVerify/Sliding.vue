@@ -103,7 +103,7 @@ onMounted(() => {
     willReadFrequently: true,
   })!;
   initCanvas();
-  console.log(blockCanvas.value?.getBoundingClientRect());
+  // console.log(blockCanvas.value?.getBoundingClientRect());
   initBlockLeft.value = blockCanvas.value?.getBoundingClientRect().left!;
 });
 

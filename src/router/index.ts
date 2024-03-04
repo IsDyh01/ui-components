@@ -14,8 +14,15 @@ import ViewPdf from "@/views/viewPdf/ViewPdf.vue?raw";
 // import slidingVerify from '@/views/slidingVerify.vue'
 import slidingVerify from "@/views/slidingVerify/SlidingVerify.vue?raw";
 import treesComponents from "@/views/treesComponents/TreesComponents.vue?raw";
+import file from "@/views/file/file.vue?raw";
 
 export const allRoutes = [
+  {
+    path: "/file",
+    component: () => import("../views/file/file.vue"),
+    meta: { title: "文件上传", icon: "Document", codeStr: file },
+    children: [],
+  },
   {
     path: "/slidingVerify",
     component: () => import("../views/slidingVerify/SlidingVerify.vue"),
@@ -107,7 +114,7 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     component: () => import("../views/layout/layout.vue"),
     children: allRoutes,
-    redirect: "/slidingVerify",
+    redirect: "/file",
   },
 ];
 
