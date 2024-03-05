@@ -41,6 +41,8 @@ app.use(UI);
 
 //全局注册图标,
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  // console.log(key);
+
   app.component(key, component);
 }
 
